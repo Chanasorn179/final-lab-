@@ -1,0 +1,83 @@
+services:
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: taskboard
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - taskboard-net
+
+  auth-service:
+    build: ./auth-service
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: taskboard
+      DB_USER: admin
+      DB_PASSWORD: secret123
+      JWT_SECRET: supersecret
+      PORT: 3001
+    depends_on:
+      - postgres
+    networks:
+      - taskboard-net
+
+  task-service:
+    build: ./task-service
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: taskboard
+      DB_USER: admin
+      DB_PASSWORD: secret123
+      JWT_SECRET: supersecret
+      PORT: 3002
+    depends_on:
+      - postgres
+    networks:
+      - taskboard-net
+
+  log-service:
+    build: ./log-service
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: taskboard
+      DB_USER: admin
+      DB_PASSWORD: secret123
+      JWT_SECRET: supersecret
+      PORT: 3003
+    depends_on:
+      - postgres
+    networks:
+      - taskboard-net
+
+  frontend:
+    build: ./frontend
+    networks:
+      - taskboard-net
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - auth-service
+      - task-service
+      - log-service
+      - frontend
+    networks:
+      - taskboard-net
+
+volumes:
+  postgres_data:
+
+networks:
+  taskboard-net:
+    driver: bridge
