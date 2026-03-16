@@ -16,6 +16,34 @@
 
 ## สมาชิกคนที่ 1: นาย ชนสรณ์ บุตรถา
 
+รับผิดชอบงานด้าน Frontend และ Infrastructure
+
+หน้าที่หลัก
+
+* พัฒนา **Frontend UI**
+
+  * Login Page
+  * Task Board UI
+  * Task CRUD interaction
+* พัฒนา **Log Service**
+
+  * API สำหรับบันทึก log
+  * API สำหรับดึง log
+* ตั้งค่า **Nginx Reverse Proxy**
+
+  * HTTPS configuration
+  * SSL certificate
+  * Reverse proxy ไปยัง services
+* ตั้งค่า **Rate Limiting**
+* สร้าง **Docker Compose orchestration**
+* ทดสอบระบบผ่าน browser
+* จัดเตรียม **screenshots สำหรับรายงาน**
+
+
+---
+
+## สมาชิกคนที่ 2: นาย เบญจศรายุทธ น้อยอุบล
+
 รับผิดชอบงานด้าน Backend และ Security
 
 หน้าที่หลัก
@@ -42,33 +70,6 @@
 
 ---
 
-## สมาชิกคนที่ 2: นาย เบญจศรายุทธ น้อยอุบล
-
-รับผิดชอบงานด้าน Frontend และ Infrastructure
-
-หน้าที่หลัก
-
-* พัฒนา **Frontend UI**
-
-  * Login Page
-  * Task Board UI
-  * Task CRUD interaction
-* พัฒนา **Log Service**
-
-  * API สำหรับบันทึก log
-  * API สำหรับดึง log
-* ตั้งค่า **Nginx Reverse Proxy**
-
-  * HTTPS configuration
-  * SSL certificate
-  * Reverse proxy ไปยัง services
-* ตั้งค่า **Rate Limiting**
-* สร้าง **Docker Compose orchestration**
-* ทดสอบระบบผ่าน browser
-* จัดเตรียม **screenshots สำหรับรายงาน**
-
----
-
 # งานที่ดำเนินการร่วมกัน
 
 สมาชิกทั้งสองคนได้ร่วมกันทำงานในส่วนสำคัญดังต่อไปนี้
@@ -92,8 +93,8 @@
 
 การแบ่งงานของกลุ่มนี้อิงตาม **Service Boundary ของ Microservices Architecture** เพื่อให้แต่ละสมาชิกสามารถรับผิดชอบส่วนของระบบได้อย่างชัดเจน
 
-* สมาชิกคนที่ 1 เน้นงานด้าน **Backend และ Security Implementation**
-* สมาชิกคนที่ 2 เน้นงานด้าน **Frontend Interface และ Infrastructure Configuration**
+* สมาชิกคนที่ 1 เน้นงานด้าน **Frontend Interface และ Infrastructure Configuration**
+* สมาชิกคนที่ 2 เน้นงานด้าน **Backend และ Security Implementation**
 
 การแบ่งงานในลักษณะนี้ช่วยให้สามารถพัฒนาแต่ละ service ได้อย่างเป็นอิสระ และทำให้การรวมระบบ (Integration) เป็นไปอย่างมีประสิทธิภาพ
 
